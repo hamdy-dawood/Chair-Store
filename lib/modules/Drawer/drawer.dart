@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../../animation/animation.dart';
 import '../../auth/auth_page.dart';
 
 class MainDrawer extends StatelessWidget {
@@ -56,39 +57,55 @@ class MainDrawer extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 12),
-                  buildSearchField(),
+                  FadeAnimation(
+                      delay: 1.5,child: buildSearchField()),
                   const SizedBox(height: 24),
-                  buildMenuItem(
-                      text: 'Favourites',
-                      icon: Icons.favorite_border,
-                      onClicked: () {}),
+                  FadeAnimation(delay: 2,
+                    child: buildMenuItem(
+                        text: 'Favourites',
+                        icon: Icons.favorite_border,
+                        onClicked: () {}),
+                  ),
                   const SizedBox(height: 16),
-                  buildMenuItem(
-                      text: 'Workflow',
-                      icon: Icons.workspaces_outline,
-                      onClicked: () {}),
+                  FadeAnimation(
+                    delay: 2.5,
+                    child: buildMenuItem(
+                        text: 'Workflow',
+                        icon: Icons.workspaces_outline,
+                        onClicked: () {}),
+                  ),
                   const SizedBox(height: 16),
-                  buildMenuItem(
-                      text: 'Updates', icon: Icons.update, onClicked: () {}),
+                  FadeAnimation(
+                    delay: 3,
+                    child: buildMenuItem(
+                        text: 'Updates', icon: Icons.update, onClicked: () {}),
+                  ),
                   const SizedBox(height: 24),
-                  Divider(color: Colors.grey[700]),
+                  FadeAnimation(
+                      delay: 3.5,child: Divider(color: Colors.grey[700])),
                   const SizedBox(height: 24),
-                  buildMenuItem(
-                      text: 'Notifications',
-                      icon: Icons.notifications_outlined,
-                      onClicked: () {}),
+                  FadeAnimation(
+                    delay: 3.5,
+                    child: buildMenuItem(
+                        text: 'Notifications',
+                        icon: Icons.notifications_outlined,
+                        onClicked: () {}),
+                  ),
                   const SizedBox(height: 16),
-                  buildMenuItem(
-                    text: 'Log out',
-                    icon: Icons.logout,
-                      onClicked: () {
-                        FirebaseAuth.instance.signOut();
-                        Navigator.pushReplacement(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const AuthPage(),
-                            ));
-                      }
+                  FadeAnimation(
+                    delay: 4,
+                    child: buildMenuItem(
+                      text: 'Log out',
+                      icon: Icons.logout,
+                        onClicked: () {
+                          FirebaseAuth.instance.signOut();
+                          Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AuthPage(),
+                              ));
+                        }
+                    ),
                   ),
                 ],
               ),
@@ -104,42 +121,45 @@ class MainDrawer extends StatelessWidget {
     required String email,
     required VoidCallback onClicked,
   }) =>
-      InkWell(
-        onTap: onClicked,
-        child: Container(
-          padding: padding.add(EdgeInsets.symmetric(vertical: 20)),
-          child: Row(
-            children: [
-              CircleAvatar(
-                radius: 30,
-                child: Icon(
-                  FontAwesomeIcons.user,
-                  color: Color(0xFFFC6B68),
+      FadeAnimation(
+        delay: 1,
+        child: InkWell(
+          onTap: onClicked,
+          child: Container(
+            padding: padding.add(EdgeInsets.symmetric(vertical: 20)),
+            child: Row(
+              children: [
+                CircleAvatar(
+                  radius: 30,
+                  child: Icon(
+                    FontAwesomeIcons.user,
+                    color: Color(0xFFFC6B68),
+                  ),
+                  backgroundColor: Colors.white,
                 ),
-                backgroundColor: Colors.white,
-              ),
-              SizedBox(width: 20),
-              Flexible(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      name,
-                      style: const TextStyle(
-                        fontSize: 20,
-                        color: Color(0xFFFC6B68),
+                SizedBox(width: 20),
+                Flexible(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        name,
+                        style: const TextStyle(
+                          fontSize: 20,
+                          color: Color(0xFFFC6B68),
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 4),
-                    Text(
-                      email,
-                      style: TextStyle(fontSize: 14, color: Colors.grey[700],
-                          overflow: TextOverflow.ellipsis),
-                    ),
-                  ],
-                ),
-              )
-            ],
+                      const SizedBox(height: 4),
+                      Text(
+                        email,
+                        style: TextStyle(fontSize: 14, color: Colors.grey[700],
+                            overflow: TextOverflow.ellipsis),
+                      ),
+                    ],
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       );
