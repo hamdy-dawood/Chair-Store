@@ -57,10 +57,10 @@ class MainDrawer extends StatelessWidget {
               child: Column(
                 children: [
                   const SizedBox(height: 12),
-                  FadeAnimation(
-                      delay: 1.5,child: buildSearchField()),
+                  FadeAnimation(delay: 1.5, child: buildSearchField()),
                   const SizedBox(height: 24),
-                  FadeAnimation(delay: 2,
+                  FadeAnimation(
+                    delay: 2,
                     child: buildMenuItem(
                         text: 'Favourites',
                         icon: Icons.favorite_border,
@@ -82,7 +82,7 @@ class MainDrawer extends StatelessWidget {
                   ),
                   const SizedBox(height: 24),
                   FadeAnimation(
-                      delay: 3.5,child: Divider(color: Colors.grey[700])),
+                      delay: 3.5, child: Divider(color: Colors.grey[700])),
                   const SizedBox(height: 24),
                   FadeAnimation(
                     delay: 3.5,
@@ -95,8 +95,8 @@ class MainDrawer extends StatelessWidget {
                   FadeAnimation(
                     delay: 4,
                     child: buildMenuItem(
-                      text: 'Log out',
-                      icon: Icons.logout,
+                        text: 'Log out',
+                        icon: Icons.logout,
                         onClicked: () {
                           FirebaseAuth.instance.signOut();
                           Navigator.pushReplacement(
@@ -104,8 +104,7 @@ class MainDrawer extends StatelessWidget {
                               MaterialPageRoute(
                                 builder: (context) => const AuthPage(),
                               ));
-                        }
-                    ),
+                        }),
                   ),
                 ],
               ),
@@ -152,7 +151,9 @@ class MainDrawer extends StatelessWidget {
                       const SizedBox(height: 4),
                       Text(
                         email,
-                        style: TextStyle(fontSize: 14, color: Colors.grey[700],
+                        style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey[700],
                             overflow: TextOverflow.ellipsis),
                       ),
                     ],
