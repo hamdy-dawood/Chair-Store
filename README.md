@@ -1,4 +1,4 @@
-# Chair Store - Flutter UI
+# Chair Store - Flutter with FireBase
 In the first part of chair store, we show you how you can create a nice clean screens for chair store that can run both Andriod and iOS devices because it builds with flutter. Then on the second episode, we build a Sign in and  Register page. The third episode is the most exciting episode because we build our home page on this episode than on the fourth episode we work on our products page, last not least on the fifth episode we build a product details screen which has some cool stuff like favourite button. At the end 6th episode we build a drawer screen.
 
 # Video Preview of Final UI
